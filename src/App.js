@@ -1,25 +1,38 @@
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { useState } from "react"
+import classNames from "classnames"
+
+const ChildComp = props => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  <div className={`box center-screen ${props.status}`}>
+    This is an error message
+  </div>
+  )
 }
 
-export default App;
+function App() {
+  const  [isWarning] = useState(true)
+
+  return(
+    <>
+      <div className="box success center-screen">This is a success message</div>
+      {/* <div className={`box ${isWarning === true && "warning"}`}>
+        This is a warning message
+      </div> */}
+      <div className={classNames("box center-screen ",{warning: isWarning})}>
+        This is a warning message
+      </div>
+      <div className={classNames("box center-screen", { warning: isWarning })}>
+      Idk! This is a extra message 
+    </div>
+      <div><ChildComp status="error" /></div>
+    </>
+  )
+}
+
+classNames("foo", { bar: true, duck: false }, "baz", { quux: true }) // => 'foo bar baz quux'
+
+
+
+export default App
