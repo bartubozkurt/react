@@ -1,11 +1,10 @@
 import React from "react";
 
 
-const PhotoComponent = (props) => {
-  console.log("propslar",props)
+const PhotoComponent = ({picture}) => {
     return (
       <div>
-      <img className='img-size' alt="test" src={props.picture}/>
+      <img className='img-size' alt="test" src={picture}/>
       </div>
     )
 }
